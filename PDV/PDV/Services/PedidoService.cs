@@ -104,7 +104,7 @@ namespace PDV.Services
 
                 pedidoFechadoViewModel.Troco = pedidoFechadoViewModel.ValorPago - pedidoFechadoViewModel.TotalPedido;
 
-                pedidoFechadoViewModel.Notas = GerarTrocoEficiente(pedidoFechadoViewModel.ValorPago, pedidoFechadoViewModel.TotalPedido);
+                pedidoFechadoViewModel.TrocoEficiente = GerarTrocoEficiente(pedidoFechadoViewModel.ValorPago, pedidoFechadoViewModel.TotalPedido);
 
                 return pedidoFechadoViewModel;
 

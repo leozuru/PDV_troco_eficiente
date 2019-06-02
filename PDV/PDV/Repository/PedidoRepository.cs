@@ -100,11 +100,40 @@ namespace PDV.Repository
             }
         }
 
+        internal async Task FecharPedido(long id)
+        {
+            try
+            {
+                IEnumerable<Pedido> pedidos = await context.Set<Pedido>()
+                                                            .Where(x => x.IdUsuario == id)
+                                                            .Where(x => x.Pago == false)
+                                                            .ToListAsync();
+
+                foreach (Pedido pedido in pedidos)
+                {
+                    pedido.Pago = true;
+                }
+
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         internal async Task<decimal> FecharByUsuario(long id)
         {
             try
             {
-                return await context.Set<Pedido>().Where(x => x.IdUsuario == id).SumAsync(x => x.Item.Valor);
+                decimal troco = await context.Set<Pedido>()
+                                            .Where(x => x.IdUsuario == id)
+                                            .Where(x => x.Pago == false)
+                                            .SumAsync(x => x.Item.Valor);
+
+                await FecharPedido(id);
+
+                return troco;
             }
             catch (Exception ex)
             {

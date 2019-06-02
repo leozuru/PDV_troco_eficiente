@@ -11,6 +11,6 @@ namespace PDV.ViewModel
         public decimal TotalPedido { get; set; }
         public decimal ValorPago { get; set; }
         public decimal Troco { get; set; }
-        public Dictionary<string, int> Notas { get; set; } = null;
+        public Dictionary<string, int> TrocoEficiente { get; set; } = null;
     }
 }

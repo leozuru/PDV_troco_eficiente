@@ -36,7 +36,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Ravióli de brie e damasco'
-           ,85.00
+           ,80.00
 		   ,GETDATE())
 GO
 
@@ -46,7 +46,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Talharim ao pesto com presunto pata negra e com escalope de mignon de angus'
-           ,77.00
+           ,70.00
 		   ,GETDATE())
 GO
 
@@ -56,7 +56,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Ravióli de carne ao molho romana'
-           ,73.00
+           ,70.00
 		   ,GETDATE())
 GO
 
@@ -66,7 +66,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Conchiglia quatro queijos ao molho siciliano'
-           ,95.00
+           ,90.00
 		   ,GETDATE())
 GO
 
@@ -86,7 +86,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Garganelli com ragu de carne suína'
-           ,55.00
+           ,50.00
 		   ,GETDATE())
 GO
 
@@ -96,7 +96,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Fettuccine com ragu de costela e cogumelos'
-           ,66.00
+           ,60.00
 		   ,GETDATE())
 GO
 
@@ -106,7 +106,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Boeuf bourguignon com massa na manteiga'
-           ,88.00
+           ,80.00
 		   ,GETDATE())
 GO
 
@@ -116,7 +116,7 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Medalhão de filé à Diana, molho de vinho madeira'
-           ,77.00
+           ,70.00
 		   ,GETDATE())
 GO
 
@@ -126,6 +126,6 @@ INSERT INTO [dbo].[Item]
            ,[Data])
      VALUES
            ('Agnolotti verde de camarão, aspargos, tomate, manjericão e catupiry alla creme com uvas passas'
-           ,85.00
+           ,80.00
 		   ,GETDATE())
 GO
