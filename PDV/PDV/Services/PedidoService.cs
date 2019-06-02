@@ -17,6 +17,11 @@ namespace PDV.Services
             this.pedidoRepository = pedidoRepository;
         }
 
+        public PedidoService()
+        {
+
+        }
+
         public async Task<PedidoViewModel> GetById(long Id)
         {
             try
@@ -86,7 +91,7 @@ namespace PDV.Services
                 return pedidoFechadoViewModel;
             }
             catch (Exception ex)
-            { 
+            {
                 throw ex;
             }
         }
@@ -99,12 +104,100 @@ namespace PDV.Services
 
                 pedidoFechadoViewModel.Troco = pedidoFechadoViewModel.ValorPago - pedidoFechadoViewModel.TotalPedido;
 
+                pedidoFechadoViewModel.Notas = GerarTrocoEficiente(pedidoFechadoViewModel.ValorPago, pedidoFechadoViewModel.TotalPedido);
+
                 return pedidoFechadoViewModel;
 
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public Dictionary<string, int> GerarTrocoEficiente(decimal valorPago, decimal totalPedido)
+        {
+            try
+            {
+                Dictionary<string, int> trocoEficiente = new Dictionary<string, int>
+                {
+                    { "100", 0 },
+                    { "50", 0 },
+                    { "20", 0 },
+                    { "10", 0 },
+                    { "0,50", 0 },
+                    { "0,10", 0 },
+                    { "0,05", 0 },
+                    { "0,01", 0 },
+                };
+
+                decimal troco = valorPago - totalPedido;
+                if (troco > 0)
+                {
+                    while (troco > 0)
+                    {
+
+                        if (troco >= 100)
+                        {
+                            troco = TratarTrocoEficiente(trocoEficiente, troco, "100");
+                            continue;
+                        }
+
+                        if (troco >= 50)
+                        {
+                            troco = TratarTrocoEficiente(trocoEficiente, troco, "50");
+                            continue;
+                        }
+
+                        if (troco >= 20)
+                        {
+                            troco = TratarTrocoEficiente(trocoEficiente, troco, "20");
+                            continue;
+                        }
+
+                        if (troco >= 10)
+                        {
+                            troco = TratarTrocoEficiente(trocoEficiente, troco, "10");
+                            continue;
+                        }
+
+                        if (troco >= 5)
+                        {
+                            troco = TratarTrocoEficiente(trocoEficiente, troco, "5");
+                            continue;
+                        }
+
+                    }
+                    
+                }
+                else
+                {
+                    trocoEficiente = null;
+                }
+
+
+
+                return trocoEficiente;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private decimal TratarTrocoEficiente(Dictionary<string, int> trocoEficiente, decimal troco, string valor)
+        {
+            try
+            {
+                trocoEficiente.TryGetValue(valor, out int qtd);
+                trocoEficiente[valor] = qtd + 1;
+
+                return troco - Convert.ToInt32(valor);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex; 
             }
         }
 

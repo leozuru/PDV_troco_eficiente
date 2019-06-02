@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDV", "PDV\PDV.csproj", "{2E6F6C16-02C3-4B56-8347-E511F2F1739D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDV", "PDV\PDV.csproj", "{2E6F6C16-02C3-4B56-8347-E511F2F1739D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDV.Test", "PDV.Test\PDV.Test.csproj", "{91C94DAB-B290-471A-9C16-71CEAD4AEA0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2E6F6C16-02C3-4B56-8347-E511F2F1739D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E6F6C16-02C3-4B56-8347-E511F2F1739D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E6F6C16-02C3-4B56-8347-E511F2F1739D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C94DAB-B290-471A-9C16-71CEAD4AEA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C94DAB-B290-471A-9C16-71CEAD4AEA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C94DAB-B290-471A-9C16-71CEAD4AEA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C94DAB-B290-471A-9C16-71CEAD4AEA0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
