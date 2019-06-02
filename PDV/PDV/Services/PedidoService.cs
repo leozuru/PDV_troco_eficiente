@@ -30,6 +30,29 @@ namespace PDV.Services
             }
         }
 
+
+        public async Task<IEnumerable<PedidoViewModel>> GetByUsuario(long IdUsuario)
+        {
+            try
+            {
+
+                List<PedidoViewModel> ListaPedidos = new List<PedidoViewModel>();
+
+                IEnumerable<Pedido> pedidos = await pedidoRepository.GetByUsuario(IdUsuario);
+
+                foreach (Pedido pedido in pedidos)
+                {
+                    ListaPedidos.Add(new PedidoViewModel(pedido));
+                };
+
+                return ListaPedidos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IList<PedidoViewModel>> GetList()
         {
             try
@@ -44,6 +67,40 @@ namespace PDV.Services
                 };
 
                 return ListaPedidos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        internal async Task<PedidoFechadoViewModel> FecharByUsuario(long id)
+        {
+            try
+            {
+                PedidoFechadoViewModel pedidoFechadoViewModel = new PedidoFechadoViewModel
+                {
+                    TotalPedido = await pedidoRepository.FecharByUsuario(id)
+                };
+
+                return pedidoFechadoViewModel;
+            }
+            catch (Exception ex)
+            { 
+                throw ex;
+            }
+        }
+
+        internal async Task<PedidoFechadoViewModel> PagarByUsuario(PedidoFechadoViewModel pedidoFechadoViewModel)
+        {
+            try
+            {
+                pedidoFechadoViewModel.TotalPedido = await pedidoRepository.FecharByUsuario(pedidoFechadoViewModel.IdUsuario);
+
+                pedidoFechadoViewModel.Troco = pedidoFechadoViewModel.ValorPago - pedidoFechadoViewModel.TotalPedido;
+
+                return pedidoFechadoViewModel;
+
             }
             catch (Exception ex)
             {
@@ -85,7 +142,7 @@ namespace PDV.Services
             try
             {
                 Pedido pedido = MontarPedido(pedidoViewModel);
-                
+
                 await pedidoRepository.Update(pedido);
 
                 return true;

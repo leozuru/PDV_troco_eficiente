@@ -17,7 +17,6 @@ namespace PDV.ViewModel
         {
             Id = usuario.Id;
             Nome = usuario.Nome;
-            Pedidos = usuario.Pedidos;
         }
 
     }

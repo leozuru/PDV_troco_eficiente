@@ -19,7 +19,19 @@ namespace PDV.Repository
         {
             try
             {
-                return await context.Set<Pedido>().FindAsync(Id);
+                return await context.Set<Pedido>().Include(x => x.Usuario).Include(x => x.Item).Where(x => x.Id == Id).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Pedido>> GetByUsuario(long Id)
+        {
+            try
+            {
+                return await context.Set<Pedido>().Include(x => x.Item).Where(x => x.IdUsuario == Id).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -81,6 +93,18 @@ namespace PDV.Repository
 
                 context.Set<Pedido>().Remove(Pedido);
                 await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        internal async Task<decimal> FecharByUsuario(long id)
+        {
+            try
+            {
+                return await context.Set<Pedido>().Where(x => x.IdUsuario == id).SumAsync(x => x.Item.Valor);
             }
             catch (Exception ex)
             {

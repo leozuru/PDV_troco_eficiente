@@ -37,7 +37,7 @@ namespace PDV.Controllers
         }
 
 
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
         {
             ActionResult result = null;

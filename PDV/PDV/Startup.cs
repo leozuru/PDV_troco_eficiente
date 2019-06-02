@@ -12,6 +12,8 @@ using PDV.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using AppPDVContext = PDV.Models.AppPDVContext;
+using PDV.Services;
+using PDV.Repository;
 
 namespace PDV
 {
@@ -33,6 +35,13 @@ namespace PDV
             //Configuração a conexão da base de dados 
             services.AddDbContext<AppPDVContext>(op => op.UseSqlServer(connection));
 
+            services.AddTransient<UsuarioRepository, UsuarioRepository>();
+            services.AddTransient<ItemRepository, ItemRepository>();
+            services.AddTransient<PedidoRepository, PedidoRepository>();
+
+            services.AddTransient<UsuarioService, UsuarioService>();
+            services.AddTransient<ItemService, ItemService>();
+            services.AddTransient<PedidoService, PedidoService>();
 
         }
 

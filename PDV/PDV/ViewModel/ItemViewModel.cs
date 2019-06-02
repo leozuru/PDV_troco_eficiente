@@ -18,7 +18,6 @@ namespace PDV.ViewModel
             Data = item.Data;
             Id = item.Id;
             Nome = item.Nome;
-            Pedidos = item.Pedidos;
             Valor = item.Valor;
 
         }

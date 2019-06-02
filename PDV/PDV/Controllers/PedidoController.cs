@@ -37,7 +37,7 @@ namespace PDV.Controllers
         }
 
 
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
         {
             ActionResult result = null;
@@ -53,6 +53,56 @@ namespace PDV.Controllers
             return result;
         }
 
+        
+        [HttpGet("GetByUsuario/{id}")]
+        public async Task<IActionResult> GetByUsuario(long id)
+        {
+            ActionResult result = null;
+            try
+            {
+                result = Ok(await pedidoService.GetByUsuario(id));
+            }
+            catch (Exception ex)
+            {
+                result = StatusCode(500, ex.Message);
+            }
+
+            return result;
+        }
+
+
+        [HttpGet("FecharByUsuario/{id}")]
+        public async Task<IActionResult> FecharByUsuario(long id)
+        {
+            ActionResult result = null;
+            try
+            {
+                result = Ok(await pedidoService.FecharByUsuario(id));
+            }
+            catch (Exception ex)
+            {
+                result = StatusCode(500, ex.Message);
+            }
+
+            return result;
+        }
+
+
+        [HttpPost("PagarByUsuario")]
+        public async Task<IActionResult> PagarByUsuario(PedidoFechadoViewModel pedidoFechadoViewModel)
+        {
+            ActionResult result = null;
+            try
+            {
+                result = Ok(await pedidoService.PagarByUsuario(pedidoFechadoViewModel));
+            }
+            catch (Exception ex)
+            {
+                result = StatusCode(500, ex.Message);
+            }
+
+            return result;
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PedidoViewModel pedidoViewModel)

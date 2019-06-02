@@ -104,7 +104,6 @@ namespace PDV.Services
                     Data = itemViewModel.Data,
                     Id = itemViewModel.Id,
                     Nome = itemViewModel.Nome,
-                    Pedidos = itemViewModel.Pedidos,
                     Valor = itemViewModel.Valor
                 };
 
