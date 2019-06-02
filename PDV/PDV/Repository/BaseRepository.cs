@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AppContext = PDV.Models.AppContext;
+using AppPDVContext = PDV.Models.AppPDVContext;
 
 namespace PDV.Repository
 {
     public abstract class BaseRepository<T> where T : BaseModel
     {
         protected readonly DbSet<T> dbSet;
-        protected readonly AppContext context;
+        protected readonly AppPDVContext context;
 
-        public BaseRepository(AppContext context)
+        public BaseRepository(AppPDVContext context)
         {
             this.context = context;
             this.dbSet = context.Set<T>();

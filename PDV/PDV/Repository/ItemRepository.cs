@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AppContext = PDV.Models.AppContext;
+using AppPDVContext = PDV.Models.AppPDVContext;
 
 namespace PDV.Repository
 {
     public class ItemRepository : BaseRepository<Item>
     {
-        public ItemRepository(AppContext context) : base(context)
+        public ItemRepository(AppPDVContext context) : base(context)
         {
 
         }

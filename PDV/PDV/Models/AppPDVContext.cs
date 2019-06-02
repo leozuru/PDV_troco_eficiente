@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PDV.Models
 {
-    public partial class AppContext : DbContext
+    public partial class AppPDVContext : DbContext
     {
-        public AppContext(DbContextOptions<AppContext> options) : base(options)
+        public AppPDVContext(DbContextOptions<AppPDVContext> options) : base(options)
         {
 
         }

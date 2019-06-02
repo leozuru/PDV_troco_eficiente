@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PDV.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using AppContext = PDV.Models.AppContext;
+using AppPDVContext = PDV.Models.AppPDVContext;
 
 namespace PDV
 {
@@ -31,7 +31,7 @@ namespace PDV
 
             string connection = Configuration["ConexaoDB:ConnectionString"];
             //Configuração a conexão da base de dados 
-            services.AddDbContext<AppContext>(op => op.UseSqlServer(connection));
+            services.AddDbContext<AppPDVContext>(op => op.UseSqlServer(connection));
 
 
         }
